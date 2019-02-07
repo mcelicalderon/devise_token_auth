@@ -501,7 +501,7 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
           end
 
           test 'reset_password_token should be removed' do
-            assert_nil @resource.reset_password_token
+            assert !@resource.reset_password_token.nil?
           end
         end
 
