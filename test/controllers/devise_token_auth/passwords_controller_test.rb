@@ -254,7 +254,6 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
           end
 
           describe 'reset_password_token is valid' do
-
             test 'mail_reset_token should be the same as reset_password_token' do
               assert_equal Devise.token_generator.digest(self, :reset_password_token, @mail_reset_token), @resource.reset_password_token
             end
@@ -499,6 +498,10 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
 
           test 'sets allow_password_change false' do
             assert_equal false, @allow_password_change
+          end
+
+          test 'reset_password_token should be removed' do
+            assert_nil @resource.reset_password_token
           end
         end
 
